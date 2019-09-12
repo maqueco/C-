@@ -1,0 +1,165 @@
+
+main.elf:     formato del fichero elf64-littleaarch64
+
+
+Desensamblado de la sección .text:
+
+0000000000000000 <ESTROFA-0x24>:
+   0:	d53800a0 	mrs	x0, mpidr_el1
+   4:	f2400400 	ands	x0, x0, #0x3
+   8:	54000de1 	b.ne	1c4 <CoreLoop>  // b.any
+   c:	58000de0 	ldr	x0, 1c8 <CoreLoop+0x4>
+  10:	52a02001 	mov	w1, #0x1000000             	// #16777216
+  14:	b9000401 	str	w1, [x0, #4]
+  18:	52a00081 	mov	w1, #0x40000               	// #262144
+  1c:	d280008c 	mov	x12, #0x4                   	// #4
+  20:	d280004e 	mov	x14, #0x2                   	// #2
+
+0000000000000024 <ESTROFA>:
+  24:	d280008d 	mov	x13, #0x4                   	// #4
+
+0000000000000028 <MI>:
+  28:	d10005ad 	sub	x13, x13, #0x1
+  2c:	d283bfea 	mov	x10, #0x1dff                	// #7679
+  30:	d281108b 	mov	x11, #0x884                 	// #2180
+  34:	d11e3d6b 	sub	x11, x11, #0x78f
+  38:	94000053 	bl	184 <make_sound>
+  3c:	d503201f 	nop
+  40:	d503201f 	nop
+
+0000000000000044 <Mute>:
+  44:	d2800c8a 	mov	x10, #0x64                  	// #100
+  48:	d281108b 	mov	x11, #0x884                 	// #2180
+  4c:	d10e116b 	sub	x11, x11, #0x384
+  50:	9400004d 	bl	184 <make_sound>
+
+0000000000000054 <MI1>:
+  54:	d283bfea 	mov	x10, #0x1dff                	// #7679
+  58:	d281108b 	mov	x11, #0x884                 	// #2180
+  5c:	d120d56b 	sub	x11, x11, #0x835
+  60:	94000049 	bl	184 <make_sound>
+
+0000000000000064 <SOL>:
+  64:	d283274a 	mov	x10, #0x193a                	// #6458
+  68:	d281108b 	mov	x11, #0x884                 	// #2180
+  6c:	d11fc56b 	sub	x11, x11, #0x7f1
+  70:	94000045 	bl	184 <make_sound>
+  74:	d503201f 	nop
+  78:	d503201f 	nop
+  7c:	d503201f 	nop
+  80:	d503201f 	nop
+
+0000000000000084 <MI2>:
+  84:	d283bfea 	mov	x10, #0x1dff                	// #7679
+  88:	d281108b 	mov	x11, #0x884                 	// #2180
+  8c:	d120356b 	sub	x11, x11, #0x80d
+  90:	9400003d 	bl	184 <make_sound>
+  94:	b400018c 	cbz	x12, c4 <EST_RE>
+
+0000000000000098 <RE>:
+  98:	d284354a 	mov	x10, #0x21aa                	// #8618
+  9c:	d281108b 	mov	x11, #0x884                 	// #2180
+  a0:	d120e56b 	sub	x11, x11, #0x839
+  a4:	94000038 	bl	184 <make_sound>
+
+00000000000000a8 <DO>:
+  a8:	d284b8ca 	mov	x10, #0x25c6                	// #9670
+  ac:	d281108b 	mov	x11, #0x884                 	// #2180
+  b0:	d11de96b 	sub	x11, x11, #0x77a
+  b4:	94000034 	bl	184 <make_sound>
+  b8:	b50002ec 	cbnz	x12, 114 <SI>
+  bc:	d503201f 	nop
+  c0:	d503201f 	nop
+
+00000000000000c4 <EST_RE>:
+  c4:	d284354a 	mov	x10, #0x21aa                	// #8618
+  c8:	d281108b 	mov	x11, #0x884                 	// #2180
+  cc:	d120bd6b 	sub	x11, x11, #0x82f
+  d0:	9400002d 	bl	184 <make_sound>
+
+00000000000000d4 <EST_DO>:
+  d4:	d284b8ca 	mov	x10, #0x25c6                	// #9670
+  d8:	d281108b 	mov	x11, #0x884                 	// #2180
+  dc:	d120956b 	sub	x11, x11, #0x825
+  e0:	94000029 	bl	184 <make_sound>
+
+00000000000000e4 <EST_RE2>:
+  e4:	9100098c 	add	x12, x12, #0x2
+  e8:	d284354a 	mov	x10, #0x21aa                	// #8618
+  ec:	d281108b 	mov	x11, #0x884                 	// #2180
+  f0:	d120bd6b 	sub	x11, x11, #0x82f
+  f4:	94000024 	bl	184 <make_sound>
+  f8:	d503201f 	nop
+  fc:	d503201f 	nop
+ 100:	d503201f 	nop
+
+0000000000000104 <EST_DO2>:
+ 104:	d284b8ca 	mov	x10, #0x25c6                	// #9670
+ 108:	d281108b 	mov	x11, #0x884                 	// #2180
+ 10c:	d120956b 	sub	x11, x11, #0x825
+ 110:	9400001d 	bl	184 <make_sound>
+
+0000000000000114 <SI>:
+ 114:	d285014a 	mov	x10, #0x280a                	// #10250
+ 118:	d281108b 	mov	x11, #0x884                 	// #2180
+ 11c:	d11e396b 	sub	x11, x11, #0x78e
+ 120:	94000019 	bl	184 <make_sound>
+ 124:	d100058c 	sub	x12, x12, #0x1
+ 128:	b5fff80d 	cbnz	x13, 28 <MI>
+
+000000000000012c <Puente>:
+ 12c:	d283274a 	mov	x10, #0x193a                	// #6458
+ 130:	d281108b 	mov	x11, #0x884                 	// #2180
+ 134:	d115dd6b 	sub	x11, x11, #0x577
+ 138:	94000013 	bl	184 <make_sound>
+ 13c:	d503201f 	nop
+ 140:	d503201f 	nop
+
+0000000000000144 <LA_puente>:
+ 144:	d282cf6a 	mov	x10, #0x167b                	// #5755
+ 148:	d281108b 	mov	x11, #0x884                 	// #2180
+ 14c:	d114516b 	sub	x11, x11, #0x514
+ 150:	d280002c 	mov	x12, #0x1                   	// #1
+ 154:	d10005ce 	sub	x14, x14, #0x1
+ 158:	9400000b 	bl	184 <make_sound>
+ 15c:	b40002ce 	cbz	x14, 1b4 <RESET>
+ 160:	17ffffb1 	b	24 <ESTROFA>
+ 164:	d503201f 	nop
+ 168:	d503201f 	nop
+ 16c:	d503201f 	nop
+ 170:	d503201f 	nop
+ 174:	d503201f 	nop
+ 178:	d503201f 	nop
+ 17c:	d503201f 	nop
+ 180:	d503201f 	nop
+
+0000000000000184 <make_sound>:
+ 184:	aa0b03e4 	mov	x4, x11
+
+0000000000000188 <make_sound2>:
+ 188:	b9001c01 	str	w1, [x0, #28]
+ 18c:	aa0a03e3 	mov	x3, x10
+
+0000000000000190 <label_sound1>:
+ 190:	d1000463 	sub	x3, x3, #0x1
+ 194:	b5ffffe3 	cbnz	x3, 190 <label_sound1>
+ 198:	b9002801 	str	w1, [x0, #40]
+ 19c:	aa0a03e3 	mov	x3, x10
+
+00000000000001a0 <label_sound2>:
+ 1a0:	d1000463 	sub	x3, x3, #0x1
+ 1a4:	b5ffffe3 	cbnz	x3, 1a0 <label_sound2>
+ 1a8:	d1000484 	sub	x4, x4, #0x1
+ 1ac:	b5fffee4 	cbnz	x4, 188 <make_sound2>
+ 1b0:	d65f03c0 	ret
+
+00000000000001b4 <RESET>:
+ 1b4:	d280008c 	mov	x12, #0x4                   	// #4
+ 1b8:	d280004e 	mov	x14, #0x2                   	// #2
+ 1bc:	17ffff9a 	b	24 <ESTROFA>
+ 1c0:	d503201f 	nop
+
+00000000000001c4 <CoreLoop>:
+ 1c4:	14000000 	b	1c4 <CoreLoop>
+ 1c8:	3f200000 	.word	0x3f200000
+ 1cc:	00000000 	.word	0x00000000

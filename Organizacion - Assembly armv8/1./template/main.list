@@ -1,0 +1,85 @@
+
+main.elf:     formato del fichero elf64-littleaarch64
+
+
+Desensamblado de la sección .text:
+
+0000000000000000 <infloop-0x20>:
+   0:	d53800a0 	mrs	x0, mpidr_el1
+   4:	f2400400 	ands	x0, x0, #0x3
+   8:	540005e1 	b.ne	c4 <CoreLoop>  // b.any
+   c:	580005e0 	ldr	x0, c8 <CoreLoop+0x4>
+  10:	52a02001 	mov	w1, #0x1000000             	// #16777216
+  14:	b9000401 	str	w1, [x0, #4]
+  18:	52a00081 	mov	w1, #0x40000               	// #262144
+  1c:	d503201f 	nop
+
+0000000000000020 <infloop>:
+  20:	d2800109 	mov	x9, #0x8                   	// #8
+
+0000000000000024 <DO>:
+  24:	d284b8ca 	mov	x10, #0x25c6                	// #9670
+  28:	d281108b 	mov	x11, #0x884                 	// #2180
+  2c:	d10fa16b 	sub	x11, x11, #0x3e8
+  30:	94000019 	bl	94 <make_sound>
+
+0000000000000034 <RE>:
+  34:	d284354a 	mov	x10, #0x21aa                	// #8618
+  38:	d281108b 	mov	x11, #0x884                 	// #2180
+  3c:	d10c816b 	sub	x11, x11, #0x320
+  40:	94000015 	bl	94 <make_sound>
+
+0000000000000044 <MI>:
+  44:	d283bfea 	mov	x10, #0x1dff                	// #7679
+  48:	d281108b 	mov	x11, #0x884                 	// #2180
+  4c:	d10b556b 	sub	x11, x11, #0x2d5
+  50:	94000011 	bl	94 <make_sound>
+
+0000000000000054 <FA>:
+  54:	d28389ea 	mov	x10, #0x1c4f                	// #7247
+  58:	d281108b 	mov	x11, #0x884                 	// #2180
+  5c:	d107d16b 	sub	x11, x11, #0x1f4
+  60:	9400000d 	bl	94 <make_sound>
+
+0000000000000064 <SOL>:
+  64:	d283274a 	mov	x10, #0x193a                	// #6458
+  68:	d281108b 	mov	x11, #0x884                 	// #2180
+  6c:	9400000a 	bl	94 <make_sound>
+
+0000000000000070 <LA>:
+  70:	d282cf6a 	mov	x10, #0x167b                	// #5755
+  74:	d281108b 	mov	x11, #0x884                 	// #2180
+  78:	94000007 	bl	94 <make_sound>
+  7c:	d503201f 	nop
+  80:	d503201f 	nop
+
+0000000000000084 <SI>:
+  84:	d28280ca 	mov	x10, #0x1406                	// #5126
+  88:	d281108b 	mov	x11, #0x884                 	// #2180
+  8c:	94000002 	bl	94 <make_sound>
+  90:	17ffffe4 	b	20 <infloop>
+
+0000000000000094 <make_sound>:
+  94:	aa0b03e4 	mov	x4, x11
+
+0000000000000098 <make_sound2>:
+  98:	b9001c01 	str	w1, [x0, #28]
+  9c:	aa0a03e3 	mov	x3, x10
+
+00000000000000a0 <label_sound1>:
+  a0:	d1000463 	sub	x3, x3, #0x1
+  a4:	b5ffffe3 	cbnz	x3, a0 <label_sound1>
+  a8:	b9002801 	str	w1, [x0, #40]
+  ac:	aa0a03e3 	mov	x3, x10
+
+00000000000000b0 <label_sound2>:
+  b0:	d1000463 	sub	x3, x3, #0x1
+  b4:	b5ffffe3 	cbnz	x3, b0 <label_sound2>
+  b8:	d1000484 	sub	x4, x4, #0x1
+  bc:	b5fffee4 	cbnz	x4, 98 <make_sound2>
+  c0:	d65f03c0 	ret
+
+00000000000000c4 <CoreLoop>:
+  c4:	14000000 	b	c4 <CoreLoop>
+  c8:	3f200000 	.word	0x3f200000
+  cc:	00000000 	.word	0x00000000
